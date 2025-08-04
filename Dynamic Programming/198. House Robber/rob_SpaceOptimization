@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        // Tabulation + SpaceOptimize
+        int prev = nums.back();
+        int next  = 0;
+        for (int i = nums.size() - 2; i >= 0; i--) {
+            int include = nums[i] + next;
+            int exclude = 0 + prev;
+            next = prev;
+            prev = max(include, exclude);
+        }
+        return prev;
+    }
+};
